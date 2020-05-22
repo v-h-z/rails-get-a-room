@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_05_22_134536) do
 
   create_table "equipment", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "type_of"
     t.bigint "room_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -1,2 +1,20 @@
-<h1>Rooms#show</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
+<h1><%= @room.name %></h1>
+<ul>
+  <li><%= "superficie : #{@room.superficy}m2" %></li>
+  <li><%= @room.independant? ? "Salle indépendante" : "La salle fait partie d'un bureau" %></li>
+  <li>adresse : <%= @room.address %> !! TODO APPROXIMATE + MAP</li>
+  <li>usages possibles
+    <ul>
+      <% @room.types.each do |type| %>
+        <li><%= type.name %></li>
+      <% end %>
+    </ul>
+  </li>
+  <li>équipement dispo :
+    <ul>
+      <% @room.equipments.each do |equipment| %>
+        <li><%= equipment.type_of %> : <%= equipment.name %></li>
+      <% end %>
+    </ul>
+  </li>
+</ul>
