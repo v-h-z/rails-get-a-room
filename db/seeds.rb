@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "a bit of cleaning first..."
+Rooms.destroy_all
+Equipment.destroy_all
+Type.destory_all
 puts "RRRooooaaaaaar !!!"
 room = Room.new(name: "Petite salle d'étalo au RDC dans un passage charmant", superficy:17, independant:true, address:"18 rue de la Corderie 75003")
 room.save
