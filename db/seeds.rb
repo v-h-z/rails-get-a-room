@@ -6,15 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "a bit of cleaning first..."
+User.destroy_all
 Type.destroy_all
 Equipment.destroy_all
 Room.destroy_all
 
 puts "RRRooooaaaaaar !!!"
-room = Room.new(name: "Petite salle d'étalo au RDC dans un passage charmant", superficy:17, independant:true, address:"18 rue de la Corderie 75003")
+user1 = User.new(email: "coucou@lewagon.org", password:"password")
+user1.save
+user2 = User.new(email: "lolilol@lewagon.org", password:"password")
+user2.save
+room = Room.new(name: "Petite salle d'étalo au RDC dans un passage charmant", superficy:17, independant:true, address:"18 rue de la Corderie 75003", user: user1)
 room.save
 puts "étalo 18corderie created"
-room2 = Room.new(name: "Petite salle de montage indépendante au RDC sur jolie ruelle", superficy:12, independant:false, address:"20 rue de la Corderie 75003")
+room2 = Room.new(name: "Petite salle de montage indépendante au RDC sur jolie ruelle", superficy:12, independant:false, address:"20 rue de la Corderie 75003", user: user2)
 room2.save
 puts "montage 20corderie created"
 mac = Equipment.new(name: "MacPro 2020", type_of:"Station de travail")
