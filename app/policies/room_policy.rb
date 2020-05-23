@@ -14,6 +14,6 @@ class RoomPolicy < ApplicationPolicy
   end
 
   def update?
-    current_user == user
+    record.user == user || user.admin?
   end
 end
