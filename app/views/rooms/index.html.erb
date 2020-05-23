@@ -3,6 +3,6 @@
 
 <ul>
 <% @rooms.each do |room| %>
-  <li><%= link_to room.name, room_path(room)  %></li>
+  <li><%= link_to room.name, room_path(room)  %> (<%= link_to "edit", edit_room_path(room) %>-<%= link_to "delete", room_path(room), method:'delete' %>) </li>
 <% end %>
 </ul>
