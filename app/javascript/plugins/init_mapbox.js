@@ -32,6 +32,7 @@ const initMapbox = () => {
     map.scrollZoom.disable();
     map.addControl(new mapboxgl.NavigationControl());
     if (map.tap) map.tap.disable();
+    if (map.tap) map.dragging.disable();
 
     const markers = JSON.parse(mapElement.dataset.markers);
 
