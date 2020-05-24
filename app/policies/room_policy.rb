@@ -29,6 +29,6 @@ class RoomPolicy < ApplicationPolicy
   end
 
   def user_is_owner_or_admin?
-    user_is_owner? || user.admin?
+    user_is_owner? || user&.admin?
   end
 end
