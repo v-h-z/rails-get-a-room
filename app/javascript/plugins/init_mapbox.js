@@ -30,7 +30,7 @@ const initMapbox = () => {
       style: 'mapbox://styles/mapbox/streets-v10'
     });
     map.scrollZoom.disable();
-    map.touchZoomRotate.enable({ around: 'center' });
+    map.touchZoomRotate.disable();
     map.addControl(new mapboxgl.NavigationControl());
     // if (map.tap) map.tap.disable();
     // if (map.tap) map.dragging.disable();
