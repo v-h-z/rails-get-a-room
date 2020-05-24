@@ -2,7 +2,8 @@ class RoomsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_room, only: [:show, :edit, :update, :destroy]
   def index
-    @rooms = Room.all
+    # @rooms = Room.all
+    @rooms = policy_scope(Room)
   end
 
   def show
@@ -35,6 +36,11 @@ class RoomsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @room.destroy
+    redirect_to rooms_path
   end
 
   private

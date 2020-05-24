@@ -3,6 +3,6 @@
 
 <ul>
 <% @rooms.each do |room| %>
-  <li><%= link_to room.name, room_path(room)  %> (<%= link_to "edit", edit_room_path(room) %>-<%= link_to "delete", room_path(room), method:'delete' %>) </li>
+  <li><%= link_to room.name, room_path(room)  %> (<%= link_to "edit", edit_room_path(room) if policy(room).edit? %>-<%= link_to "delete", room_path(room), method:'delete', data: {confirm: 'are you sure?'} if policy(room).destroy? %>) <%= room.user.email %> </li>
 <% end %>
 </ul>

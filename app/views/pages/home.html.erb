@@ -1,3 +1,17 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 <%= link_to "Voir toutes les salles !", rooms_path %>
+<br>
+<hr>
+<h2>vite une salle !</h2>
+<p>montrez moi les salles proches de moi !</p>
+<form id="postal-code">
+  <input type="text" placeholder="75003" value="Paris">
+  <input type="submit" class="btn btn-primary">
+</form>
+<br>
+<ul>
+  <% @rooms.each do |room| %>
+    <li><%= room.name %> - <%= room.address %></li>
+  <% end %>
+</ul>
