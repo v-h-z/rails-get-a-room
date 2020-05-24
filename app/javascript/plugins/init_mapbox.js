@@ -30,7 +30,33 @@ const initMapbox = () => {
       style: 'mapbox://styles/mapbox/streets-v10'
     });
     map.scrollZoom.disable();
-    map.touchZoomRotate.disable();
+    // map.dragPan.disable();
+    // map.on('touchstart', event => {
+    //     const e = event.originalEvent;
+    //     if (e && 'touches' in e) {
+    //         if (e.touches.length > 1) {
+    //             this.map.dragPan.enable();
+    //         } else {
+    //             this.map.dragPan.disable();
+    //         }
+    //     }
+    // });
+    const isTouchEvent = e => e.originalEvent && "touches" in e.originalEvent;
+    const isTwoFingerTouch = e => e.originalEvent.touches.length >= 2;
+
+    map.on("dragstart", event => {
+      if (isTouchEvent(event) && !isTwoFingerTouch(event)) {
+        map.dragPan.disable();
+      }
+    });
+
+      // Drag events not emited after dragPan disabled, so I use touch event here
+    map.on("touchstart", event => {
+      if (isTouchEvent(event) && isTwoFingerTouch(event)) {
+        map.dragPan.enable();
+      }
+    });
+    // map.touchZoomRotate.disable();
     map.addControl(new mapboxgl.NavigationControl());
     // if (map.tap) map.tap.disable();
     // if (map.tap) map.dragging.disable();
