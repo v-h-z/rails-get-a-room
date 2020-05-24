@@ -12,3 +12,8 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "rooms/index";
+
+.content-wrapper {
+  min-height: calc(100vh - 70px - 100px);
+}

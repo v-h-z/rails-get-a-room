@@ -1,4 +1,5 @@
-<h1>Pages#home</h1>
+<%= render 'home_banner' %>
+<!-- <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 <%= link_to "Voir toutes les salles !", rooms_path %>
 <br>
@@ -14,4 +15,8 @@
   <% @rooms.each do |room| %>
     <li><%= room.name %> - <%= room.address %></li>
   <% end %>
-</ul>
+</ul> -->
+<div class="claim">
+  <p class="lead">Les <mark>meilleures salles</mark> partout en France. Les <mark>plus grandes</mark> sociétés de post-production nous font confiance et mettent à <mark>votre</mark> disposition leurs équipements. Trouvez aussi une <mark>petite salle</mark> chez un freelance <mark>tout près</mark> de chez vous !</p>
+</div>
+<%= render 'cards_grid' %>

@@ -3,7 +3,12 @@ class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
   def index
     # @rooms = Room.all
-    @rooms = policy_scope(Room.geocoded)
+    if params.has_key?(:search) && search_params[:query] != ""
+      @search = search_params[:query]
+      @rooms = policy_scope(Room.geocoded.near(@search, 50))
+    else
+      @rooms = policy_scope(Room.geocoded)
+    end
     # @rooms = Room.geocoded # returns flats with coordinates
 
     @markers = @rooms.map do |room|
@@ -61,5 +66,9 @@ class RoomsController < ApplicationController
 
   def room_params
     params.require(:room).permit(:name, :address, :superficy, :independant)
+  end
+
+  def search_params
+    params.require(:search).permit(:query)
   end
 end

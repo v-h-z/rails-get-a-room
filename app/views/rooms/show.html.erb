@@ -17,4 +17,5 @@
       <% end %>
     </ul>
   </li>
+  <li> (<%= link_to "edit", edit_room_path(@room) if policy(@room).edit? %>-<%= link_to "delete", room_path(@room), method:'delete', data: {confirm: 'are you sure?'} if policy(@room).destroy? %>) <%= @room.user.email %> </li>
 </ul>
